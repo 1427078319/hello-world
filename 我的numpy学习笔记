@@ -1,4 +1,84 @@
-创建矩阵
+#创建矩阵
 import numpy as np
 array=np.array([[1,2,3],
                 [4,5,6]])
+#查看array属性
+print(array.ndim) #看维度
+print(array.shape) #看形状
+print(array.size) #看大小
+
+#可以定义array的type
+a=np.array([2,3,4],dtype=np.int)#默认64
+a=np.array([2,3,4],dtype=np.int32)
+a=np.array([2,3,4],dtype=np.float)#默认64
+a=np.array([2,3,4],dtype=np.float32)
+print(a.dtype)
+
+#定义矩阵
+a=np.array([[2,3,4],
+            [5,6,7]])
+a=np.zeros((3,4)） #全为0的矩阵，三行四列
+a=np.ones((2,3))  #全为1的矩阵，两行三列
+a=np.empty((3,4)) #接近0的矩阵，三行四列
+a=np.arange(10，20，2) #有序数列10到20（不可取），步长2
+a=np.arange(12).reshape((3,4)) #定义形状，三行四列
+a=np.linspace(1,10,20) #生成线段，从1到10，20段
+a=np.linspace(1,10,6).reshape((2,3)) #生成线段，从1到10，6段，并且变成矩阵形状
+
+
+#基础运算1
+import numpy as np
+a=np.array([10,20,30,40])
+b=np.arange(4)
+c=a-b
+print(c)#结果就是对应元素相减，加法同理
+c=a*b#对应元素相乘
+c=a**b #对应元素的幂运算
+#矩阵乘法的方法
+import numpy as np
+a=np.array([[1,1],
+            [0,1]])
+b=np.arange(4).reshape((2,2))
+c=np.dot(a,b)#第一种
+c=a.dot(b) #第二种  两者结果一样
+#随机值，找最大最小求和
+a=np.random.random((2,4)) #随机生成，括号里是shape
+print(np.sum(a) )#求和
+print(np.sum(a,axis=1)) #列求和，=0为行求和
+print(np.max(a)) #找最大
+print(np.min(a)) #找最小
+print(np.max(a,axis=1)) #列求最大，最小同理，=0为行
+
+
+
+
+#基础运算2
+a=np.arange(2,14).reshape((3,4))
+print(np.argmin(a))  #求最小值在哪个位置
+print(np.argmax(a))  #求最大值在哪个位置
+print(np.mean(a))    #求平均值
+print(a.mean())      #也是求平均值，因为a定义好了
+print(np.average(a)) #也是求平均值
+print(a.average())  #这种错误，不可以用
+print(np.median(a))  #求中位数
+print(np.cumsum(a))  #逐步累加，都显示
+print(np.diff(a))  #每两个数的差
+print(np.nonzero(a))  #输出非零数的索引，两个array，前是行，后是列
+print(np.sort(a))  #逐行排序
+print(np.transpose(a))  #矩阵反向
+print(a.T)              #矩阵反向
+print(np.clip(a,5,9))  #所有小于5都等于5，所有大于9都等于9，在这之间的保存原型
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
