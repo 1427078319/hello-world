@@ -70,6 +70,73 @@ print(a.T)              #矩阵反向
 print(np.clip(a,5,9))  #所有小于5都等于5，所有大于9都等于9，在这之间的保存原型
 
 
+#numpy索引
+A=np.arange(3,15)
+print(A[3])   #一维索引
+
+A=np.arange(3,15).reshape((3,4))
+print(A)
+print(A[2])  #二维这样索引的是行
+print(A[1][1]) #这样就是第一行第一列（注意，0为起始）
+print(A[2,1]) #第二行第一列，第二种索引方法，（实际为第三行第二列）
+print(A[2,:]) #第二行所有
+print(A[:,1]) #第一列所有
+print(A[1,1:2]) #第一行的第一到第二的值
+
+for row in A:
+    print(row) # row是行 迭代出行
+for column in A.T:
+    print(column) #翻转然后出列
+for item in A.flat:
+    print(item) # A.flat是迭代器
+print(A.flatten()) #把A从三行四列变成一行
+
+
+#array合并
+A=np.array([1,1,1])
+B=np.array([2,2,2])
+print(np.vstack((A,B))) #上下合并
+print(np.hstack((A,B))) #左右合并
+print(A[np.newaxis,:]) #前面加维度
+print(A[:,np.newaxis]) #后面加维度
+A=np.array([1,1,1])[:,np.newaxis]
+B=np.array([2,2,2])[:,np.newaxis]
+C=np.concatenate((A,B,B,B),axis=0) #纵向合并
+C=np.concatenate((A,B,B,B),axis=1) #横向合并
+
+#分割array
+A=np.arange(12).reshape((3,4))
+print(np.split(A,2,axis=1))#分割A，分成相等的2份，=1纵向
+print(np.array_split(A,3,axis=1)) #不等分割
+print(np.vsplit(A,3)) #纵向分割  
+print(np.hsplit(A,2)) #横向分割  这两个函数都只能等分
+
+#copy和深copy
+a=np.arange(4)
+b=a
+c=a
+d=b
+a[0]=11
+print(a,b,c,d) # b is a 原来的变了，其他跟着变，其他变了，原来也会变， 关联起来了
+b=a.copy() #deep copy a变 b还是原来a的内容 没关联起来
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
